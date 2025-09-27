@@ -69,7 +69,7 @@ git push origin main
 <h3>Настройка GitHub Pages</h3>
 
 <ol>
-  <li>Перейдите в <strong>Settings -> Pages</strong> вашего репозитория.</li>
+  <li>Перейдите в <em>Settings -> Pages</em> вашего репозитория.</li>
   <li>В разделе <em>Source</em> выберите ветку <code>gh-pages</code> и директорию <code>/ (root)</code>.</li>
   <li>Сохраните настройки. Через несколько секунд сайт будет доступен по указанной ссылке.</li>
 </ol>
