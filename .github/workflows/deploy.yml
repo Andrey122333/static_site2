@@ -2,18 +2,33 @@ name: Deploy MkDocs
 
 on:
   push:
-    branches: [master]
+    branches: [ master ]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Build site with Docker
+    - name: Build MkDocs site with Docker
       run: |
         docker run --rm -v ${{ github.workspace }}:/docs squidfunk/mkdocs-material build
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: "20"
+
+    - name: Install npm dependencies
+      run: npm ci
+
+    - name: Process CSS/JS and Minify HTML
+      run: npm run build:assets
+
+    - name: Validate HTML
+      run: npm run test
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
@@ -21,5 +36,3 @@ jobs:
         github_token: ${{ secrets.GH_PAT }}
         publish_dir: ./site
         publish_branch: gh-pages
-
-

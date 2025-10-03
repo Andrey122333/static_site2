@@ -1,3 +1,15 @@
 site_name: "Мой сайт"
+site_description: "Собственная тема на MkDocs"
+site_author: "Андрей Валдаев"
+
 theme:
-  name: "material"
+  name: null
+  custom_dir: overrides
+
+extra_css:
+  - assets/css/main.min.css
+extra_javascript:
+  - assets/js/main.min.js
+
+nav:
+  - Главная: index.md
